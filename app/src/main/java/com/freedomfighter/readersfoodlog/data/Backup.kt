@@ -9,7 +9,7 @@ import java.util.zip.ZipOutputStream
 
 /** The journal as one zip of its day folders, to carry it to another phone. */
 object Backup {
-    private val ENTRY = Regex("""\d{4}-\d{2}-\d{2}/(\d{6}_[a-z]+\.jpg|activities\.txt)""")
+    private val ENTRY = Regex("""\d{4}-\d{2}-\d{2}/(\d{6}_[a-z]+\.jpg|activities\.txt|weight\.txt)""")
 
     /** Blocking. Returns the number of files written, or -1 when it failed. */
     fun export(context: Context, target: Uri): Int = runCatching {

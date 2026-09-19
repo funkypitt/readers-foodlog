@@ -33,17 +33,20 @@ data class PhotoEntry(override val time: LocalTime, val meal: Meal, val file: Fi
 /** [line] is the entry's position in the day's activities file. */
 data class ActivityEntry(override val time: LocalTime, val text: String, val line: Int) : Entry()
 
-data class Day(val date: LocalDate, val photos: Int, val activities: Int)
+/** [weight] is in kilograms, whatever unit the screens show. */
+data class Day(val date: LocalDate, val photos: Int, val activities: Int, val weight: Double? = null)
 
 /**
  * The whole journal is plain folders: journal/2026-09-20/ holds the day's photos
- * (HHmmss_meal.jpg) and activities.txt (one "HH:mm:ss<TAB>text" line per activity).
+ * (HHmmss_meal.jpg), activities.txt (one "HH:mm:ss<TAB>text" line per activity) and
+ * weight.txt (the day's weight in kilograms).
  */
 object Journal {
     private val DAY = DateTimeFormatter.ISO_LOCAL_DATE
     private val STAMP = DateTimeFormatter.ofPattern("HHmmss")
     private val CLOCK = DateTimeFormatter.ofPattern("HH:mm:ss")
     private const val ACTIVITIES = "activities.txt"
+    private const val WEIGHT = "weight.txt"
 
     private val _version = MutableStateFlow(0)
     /** Bumped after every change, so the screens list the folders again. */
@@ -60,8 +63,8 @@ object Journal {
     fun days(context: Context): List<Day> =
         (root(context).listFiles() ?: emptyArray())
             .mapNotNull { d -> runCatching { LocalDate.parse(d.name, DAY) }.getOrNull() }
-            .map { date -> entries(context, date).let { e -> Day(date, e.count { it is PhotoEntry }, e.count { it is ActivityEntry }) } }
-            .filter { it.photos + it.activities > 0 }
+            .map { date -> entries(context, date).let { e -> Day(date, e.count { it is PhotoEntry }, e.count { it is ActivityEntry }, weight(context, date)) } }
+            .filter { it.photos + it.activities > 0 || it.weight != null }
             .sortedByDescending { it.date }
 
     fun entries(context: Context, date: LocalDate): List<Entry> {
@@ -85,6 +88,24 @@ object Journal {
             ActivityEntry(t, l.substring(tab + 1), i)
         }
     }
+
+    fun weight(context: Context, date: LocalDate): Double? =
+        File(dir(context, date), WEIGHT).takeIf { it.exists() }?.readText()?.trim()?.toDoubleOrNull()
+
+    /** One weight per day, in kilograms; null removes it. */
+    fun setWeight(context: Context, date: LocalDate, kg: Double?) {
+        val d = dir(context, date)
+        if (kg == null) { File(d, WEIGHT).delete(); tidy(d) }
+        else { d.mkdirs(); File(d, WEIGHT).writeText(String.format(java.util.Locale.ROOT, "%.2f\n", kg)) }
+        changed(context)
+    }
+
+    /** Every weight entered, oldest first. */
+    fun weights(context: Context): List<Pair<LocalDate, Double>> =
+        (root(context).listFiles() ?: emptyArray())
+            .mapNotNull { d -> runCatching { LocalDate.parse(d.name, DAY) }.getOrNull() }
+            .mapNotNull { date -> weight(context, date)?.let { date to it } }
+            .sortedBy { it.first }
 
     /** Where the camera writes the shot taken at [now]; call [changed] once it is saved. */
     fun newPhotoFile(context: Context, now: LocalDateTime): File {

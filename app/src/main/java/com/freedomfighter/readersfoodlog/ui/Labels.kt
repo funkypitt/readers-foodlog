@@ -25,8 +25,9 @@ object Labels {
         }
     }
 
-    fun summary(context: Context, photos: Int, activities: Int): String = listOfNotNull(
+    fun summary(context: Context, photos: Int, activities: Int, weight: String? = null): String = listOfNotNull(
         if (photos > 0) context.resources.getQuantityString(R.plurals.n_photos, photos, photos) else null,
-        if (activities > 0) context.resources.getQuantityString(R.plurals.n_activities, activities, activities) else null
+        if (activities > 0) context.resources.getQuantityString(R.plurals.n_activities, activities, activities) else null,
+        weight
     ).joinToString(" · ")
 }

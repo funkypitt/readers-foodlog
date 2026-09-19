@@ -15,7 +15,9 @@ data class Settings(
     val font: FontChoice = FontChoice.SANS,
     val textSize: TextSize = TextSize.MEDIUM,
     val align: Align = Align.LEFT,
-    val haptics: Boolean = true
+    val haptics: Boolean = true,
+    /** Weights are stored in kilograms; this only changes what is typed and shown. */
+    val pounds: Boolean = false
 )
 
 class Prefs(context: Context) {
@@ -30,7 +32,8 @@ class Prefs(context: Context) {
         font = enumOr(sp.getString("font", null), FontChoice.SANS),
         textSize = enumOr(sp.getString("text_size", null), TextSize.MEDIUM),
         align = enumOr(sp.getString("align", null), Align.LEFT),
-        haptics = sp.getBoolean("haptics", true)
+        haptics = sp.getBoolean("haptics", true),
+        pounds = sp.getBoolean("pounds", java.util.Locale.getDefault().country in setOf("US", "LR", "MM"))
     )
     private inline fun <reified E : Enum<E>> enumOr(name: String?, default: E): E =
         name?.let { runCatching { enumValueOf<E>(it) }.getOrNull() } ?: default
@@ -40,6 +43,7 @@ class Prefs(context: Context) {
     fun setTextSize(t: TextSize) = sp.edit().putString("text_size", t.name).apply()
     fun setAlign(a: Align) = sp.edit().putString("align", a.name).apply()
     fun setHaptics(v: Boolean) = sp.edit().putBoolean("haptics", v).apply()
+    fun setPounds(v: Boolean) = sp.edit().putBoolean("pounds", v).apply()
     fun toggleTheme(systemIsDark: Boolean) {
         val dark = when (_settings.value.theme) { ThemeMode.DARK -> true; ThemeMode.LIGHT -> false; ThemeMode.SYSTEM -> systemIsDark }
         setTheme(if (dark) ThemeMode.LIGHT else ThemeMode.DARK)

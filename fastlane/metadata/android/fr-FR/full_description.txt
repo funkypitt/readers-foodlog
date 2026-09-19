@@ -4,6 +4,7 @@ Photographiez ce que vous allez manger, aussi machinalement que l'on pioche dans
 • Chaque photo reçoit une étiquette d'après son heure : petit-déjeuner, déjeuner, dîner ou collation. Touchez une photo pour la changer.
 • L'accueil est une liste de jours. Ouvrez un jour pour voir ses photos dans l'ordre des heures.
 • L'activité physique en un toucher : musculation, activité intense, endurance — ou une ligne libre.
+• Votre poids une fois par jour, en un toucher, et la courbe de son évolution (30 jours, 90 jours, un an, tout).
 • Tout reste sur le téléphone : ni compte, ni permission réseau. Exportez le journal en un seul fichier zip pour changer de téléphone ; l'import ajoute et ne remplace rien.
 
 Noir et blanc, tout en texte, six langues, comme les autres apps Reader's.

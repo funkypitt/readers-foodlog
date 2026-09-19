@@ -20,6 +20,7 @@ import com.freedomfighter.readersfoodlog.ui.Nav
 import com.freedomfighter.readersfoodlog.ui.ReaderTheme
 import com.freedomfighter.readersfoodlog.ui.Screen
 import com.freedomfighter.readersfoodlog.ui.SettingsScreen
+import com.freedomfighter.readersfoodlog.ui.WeightScreen
 
 class MainActivity : ComponentActivity() {
     private val nav = Nav()
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
                     Screen.Home -> HomeScreen(nav, app)
                     is Screen.DayView -> DayScreen(nav, app, s.date)
                     Screen.Settings -> SettingsScreen(nav, app)
+                    Screen.Weight -> WeightScreen(nav, app)
                 }
             }
         }

@@ -65,6 +65,7 @@ sealed class Screen {
     data object Home : Screen()
     data class DayView(val date: LocalDate) : Screen()
     data object Settings : Screen()
+    data object Weight : Screen()
 }
 
 class Nav {
@@ -89,6 +90,8 @@ fun HomeScreen(nav: Nav, app: App) {
     val today = remember(version, app.resumes.intValue) { LocalDate.now() }
     val days = remember(version, today) { Journal.days(context) }
     val todays = days.firstOrNull { it.date == today }
+    val s by app.prefs.settings.collectAsState()
+    fun summary(d: com.freedomfighter.readersfoodlog.data.Day) = Labels.summary(context, d.photos, d.activities, d.weight?.let { Units.show(context, it, s.pounds) })
     Page {
         Column(Modifier.fillMaxSize()) {
             ScreenTitle(stringResource(R.string.app_title), onBack = null, trailing = stringResource(R.string.settings), onTrailing = { nav.push(Screen.Settings) })
@@ -96,14 +99,14 @@ fun HomeScreen(nav: Nav, app: App) {
                 item {
                     TextRow(
                         stringResource(R.string.today),
-                        secondary = todays?.let { Labels.summary(context, it.photos, it.activities) } ?: stringResource(R.string.nothing_yet)
+                        secondary = todays?.let { summary(it) } ?: stringResource(R.string.nothing_yet)
                     ) { nav.push(Screen.DayView(today)) }
                 }
                 items(days.filter { it.date != today }, key = { it.date.toEpochDay() }) { d ->
-                    TextRow(Labels.day(context, d.date, today), secondary = Labels.summary(context, d.photos, d.activities)) { nav.push(Screen.DayView(d.date)) }
+                    TextRow(Labels.day(context, d.date, today), secondary = summary(d)) { nav.push(Screen.DayView(d.date)) }
                 }
             }
-            ActionBar(app)
+            ActionBar(nav, app, todays?.weight)
         }
     }
     ActivityLogger(app)
@@ -111,12 +114,18 @@ fun HomeScreen(nav: Nav, app: App) {
 
 /** The two gestures of the app, under the thumb: photograph, note an activity. */
 @Composable
-fun ActionBar(app: App) {
+fun ActionBar(nav: Nav, app: App, weightToday: Double?) {
     val context = LocalContext.current
     val colors = LocalColors.current
     val tick = rememberTick()
     Rule()
-    TextRow("✎  " + stringResource(R.string.activity), size = LocalTypo.current.title) { tick(); app.activityPrompt.value = true }
+    val s by app.prefs.settings.collectAsState()
+    Row(Modifier.fillMaxWidth()) {
+        Box(Modifier.weight(1f)) { TextRow("✎  " + stringResource(R.string.activity), size = LocalTypo.current.title) { tick(); app.activityPrompt.value = true } }
+        Box(Modifier.weight(1f)) {
+            TextRow(weightToday?.let { Units.show(context, it, s.pounds) } ?: ("⚖  " + stringResource(R.string.weight)), size = LocalTypo.current.title) { tick(); nav.push(Screen.Weight) }
+        }
+    }
     Box(
         Modifier.fillMaxWidth().background(colors.fg).noRippleClickable { tick(); photograph(context) }.padding(horizontal = rowPadH, vertical = 30.dp)
     ) { T("◉  " + stringResource(R.string.photograph), color = colors.bg, maxLines = 1) }
@@ -154,13 +163,17 @@ fun DayScreen(nav: Nav, app: App, date: LocalDate) {
     var confirmDelete by remember { mutableStateOf<PhotoEntry?>(null) }
     var activityMenu by remember { mutableStateOf<ActivityEntry?>(null) }
     var editing by remember { mutableStateOf<ActivityEntry?>(null) }
+    var weighing by remember { mutableStateOf(false) }
+    val s by app.prefs.settings.collectAsState()
+    val weight = remember(version, date) { Journal.weight(context, date) }
     BackHandler { nav.pop() }
     Page {
         Column(Modifier.fillMaxSize()) {
             ScreenTitle(Labels.day(context, date, today), onBack = { nav.pop() })
-            if (entries.isEmpty()) {
+            if (entries.isEmpty() && weight == null) {
                 Small(stringResource(R.string.nothing_yet), Modifier.weight(1f).padding(horizontal = rowPadH, vertical = 24.dp))
             } else LazyColumn(Modifier.weight(1f)) {
+                if (weight != null) item { TextRow(Units.show(context, weight, s.pounds), secondary = stringResource(R.string.weight), size = LocalTypo.current.title) { weighing = true } }
                 items(entries, key = { e -> if (e is PhotoEntry) e.file.name else "a" + (e as ActivityEntry).line + e.text }) { e ->
                     when (e) {
                         is PhotoEntry -> PhotoBlock(e) { photoMenu = e }
@@ -169,11 +182,12 @@ fun DayScreen(nav: Nav, app: App, date: LocalDate) {
                 }
                 item { VSpace(24.dp) }
             }
-            if (date == today) ActionBar(app) else Box(Modifier.windowInsetsPadding(WindowInsets.navigationBars))
+            if (date == today) ActionBar(nav, app, weight) else Box(Modifier.windowInsetsPadding(WindowInsets.navigationBars))
         }
     }
     if (date == today) ActivityLogger(app)
 
+    if (weighing) WeightPrompt(app, date) { weighing = false }
     photoMenu?.let { p ->
         TextMenu(
             HM.format(p.time),
@@ -278,6 +292,7 @@ fun SettingsScreen(nav: Nav, app: App) {
                 TextRow(when (s.font) { FontChoice.SANS -> "sans-serif"; FontChoice.SERIF -> "serif"; FontChoice.MONO -> "mono" }, secondary = stringResource(R.string.font)) {
                     app.prefs.setFont(when (s.font) { FontChoice.SANS -> FontChoice.SERIF; FontChoice.SERIF -> FontChoice.MONO; FontChoice.MONO -> FontChoice.SANS })
                 }
+                TextRow(if (s.pounds) "lb" else "kg", secondary = stringResource(R.string.weight_unit)) { app.prefs.setPounds(!s.pounds) }
                 TextRow(if (s.haptics) stringResource(R.string.on) else stringResource(R.string.off), secondary = stringResource(R.string.haptics)) { app.prefs.setHaptics(!s.haptics) }
                 Rule(Modifier.padding(vertical = 8.dp))
                 Small(stringResource(R.string.meal_hours), Modifier.padding(horizontal = rowPadH, vertical = 12.dp), maxLines = 6)
