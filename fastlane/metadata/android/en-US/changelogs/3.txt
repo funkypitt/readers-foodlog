@@ -1,0 +1,1 @@
+A tile for Reader's Launcher (today's count, activity, weight, camera). Fix: the weight unit shown to the launcher follows the app's.

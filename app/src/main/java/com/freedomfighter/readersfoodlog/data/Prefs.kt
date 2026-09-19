@@ -33,7 +33,7 @@ class Prefs(context: Context) {
         textSize = enumOr(sp.getString("text_size", null), TextSize.MEDIUM),
         align = enumOr(sp.getString("align", null), Align.LEFT),
         haptics = sp.getBoolean("haptics", true),
-        pounds = sp.getBoolean("pounds", java.util.Locale.getDefault().country in setOf("US", "LR", "MM"))
+        pounds = pounds(sp)
     )
     private inline fun <reified E : Enum<E>> enumOr(name: String?, default: E): E =
         name?.let { runCatching { enumValueOf<E>(it) }.getOrNull() } ?: default
@@ -50,6 +50,8 @@ class Prefs(context: Context) {
     }
 
     companion object {
+        /** Pounds where people weigh themselves in pounds, until the setting says otherwise. */
+        fun pounds(sp: SharedPreferences): Boolean = sp.getBoolean("pounds", java.util.Locale.getDefault().country in setOf("US", "LR", "MM"))
         /** Read without the flow, for receivers and widgets that live outside the app process lifecycle. */
         fun raw(context: Context): SharedPreferences = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
     }

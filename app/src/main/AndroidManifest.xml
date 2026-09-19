@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera.any" />
+    <!-- Only apps signed with the same key (Reader's Launcher) may read today's counts. -->
+    <permission
+        android:name="com.freedomfighter.readersfoodlog.permission.ACCESS"
+        android:protectionLevel="signature" />
 
     <!-- allowBackup off: the journal stays on the phone; export/import is the user's own move. -->
     <application
@@ -47,6 +51,11 @@
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
         </service>
+        <provider
+            android:name=".provider.TodayProvider"
+            android:authorities="com.freedomfighter.readersfoodlog"
+            android:exported="true"
+            android:permission="com.freedomfighter.readersfoodlog.permission.ACCESS" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.freedomfighter.readersfoodlog.files"

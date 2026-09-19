@@ -50,9 +50,10 @@ class MainActivity : ComponentActivity() {
     override fun onResume() { super.onResume(); app.resumes.intValue++ }
 
     private fun handle(intent: Intent?) {
-        if (intent?.action != ACTION_ADD_ACTIVITY) return
+        val action = intent?.action
+        if (action != ACTION_ADD_ACTIVITY && action != ACTION_WEIGHT) return
         while (nav.stack.size > 1) nav.pop()
-        app.activityPrompt.value = true
+        if (action == ACTION_ADD_ACTIVITY) app.activityPrompt.value = true else nav.push(Screen.Weight)
         intent.action = null
     }
 
@@ -67,5 +68,8 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    companion object { const val ACTION_ADD_ACTIVITY = "com.freedomfighter.readersfoodlog.ADD_ACTIVITY" }
+    companion object {
+        const val ACTION_ADD_ACTIVITY = "com.freedomfighter.readersfoodlog.ADD_ACTIVITY"
+        const val ACTION_WEIGHT = "com.freedomfighter.readersfoodlog.WEIGHT"
+    }
 }

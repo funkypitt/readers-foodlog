@@ -15,6 +15,8 @@ touch anywhere on the viewfinder, and the screen closes by itself.
   year or everything. Stored in kilograms, shown in kg or lb.
 - **Ways in**: a 1×1 camera widget, a 4×1 widget (today's count, pencil, camera), a
   quick-settings tile (works over the lock screen), launcher shortcuts, volume keys as shutter.
+- **Reader's Launcher tile** (launcher 1.17.0+): today's count with ✎ activity, ⚖ weight and ◉ camera,
+  read through a signature-protected provider (`content://com.freedomfighter.readersfoodlog/today`).
 - **Purely local**: no network permission, no account, Android backup off. Export the journal
   as one zip and import it on another phone; importing merges and replaces nothing.
 - Black and white, text only, English + fr/de/es/pt/ru, like the other Reader's apps.

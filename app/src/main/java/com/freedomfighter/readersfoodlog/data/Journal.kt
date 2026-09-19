@@ -55,6 +55,7 @@ object Journal {
     fun changed(context: Context) {
         _version.value++
         FoodWidgets.refresh(context)
+        context.contentResolver.notifyChange(com.freedomfighter.readersfoodlog.provider.TodayProvider.URI, null)
     }
 
     private fun root(context: Context) = File(context.filesDir, "journal")
