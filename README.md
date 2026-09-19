@@ -1,3 +1,5 @@
+![Reader's Food Log](docs/banner.png)
+
 # Reader's Food Log
 
 A food journal made of photos only, for Android. Photographing what you are about to eat
@@ -29,3 +31,8 @@ exactly these folders.
 Strings for the six languages are generated from the table in `tools/strings.py`.
 
 MIT licence.
+
+## Install
+
+Signed APK in the [releases](https://github.com/funkypitt/readers-foodlog/releases/latest), or add the
+F-Droid repository `https://funkypitt.github.io/fdroid-repo/repo`.
