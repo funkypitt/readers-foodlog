@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_title">дневник питания</string>
+    <string name="action_ok">ок</string>
+    <string name="action_cancel">отмена</string>
+    <string name="settings">настройки</string>
+    <string name="today">сегодня</string>
+    <string name="yesterday">вчера</string>
+    <string name="nothing_yet">пока ничего</string>
+    <string name="photograph">снять</string>
+    <string name="activity">активность</string>
+    <string name="activity_title">физическая активность, сейчас</string>
+    <string name="activity_free">что вы делали?</string>
+    <string name="act_strength">силовая тренировка</string>
+    <string name="act_intense">интенсивная нагрузка</string>
+    <string name="act_endurance">выносливость</string>
+    <string name="act_other">другое…</string>
+    <string name="meal_breakfast">завтрак</string>
+    <string name="meal_lunch">обед</string>
+    <string name="meal_dinner">ужин</string>
+    <string name="meal_snack">перекус</string>
+    <string name="touch_anywhere">коснитесь экрана</string>
+    <string name="camera_needed">Этот экран только фотографирует. Коснитесь, чтобы разрешить камеру.</string>
+    <string name="failed">не получилось — попробуйте ещё раз</string>
+    <string name="share">поделиться</string>
+    <string name="delete">удалить</string>
+    <string name="delete_photo_q">удалить это фото?</string>
+    <string name="delete_for_good">удалить навсегда</string>
+    <string name="change_text">изменить текст</string>
+    <string name="local_hint">Всё остаётся на этом телефоне. Для переноса на новый телефон экспортируйте дневник здесь и импортируйте там.</string>
+    <string name="export_journal">экспорт дневника</string>
+    <string name="export_hint">один zip-файл, куда хотите</string>
+    <string name="import_journal">импорт дневника</string>
+    <string name="import_hint">дополняет, не заменяет</string>
+    <string name="working">выполняется…</string>
+    <string name="exported">дневник экспортирован</string>
+    <string name="nothing_new">в этом файле нет ничего нового</string>
+    <string name="not_a_journal">этот файл не является дневником питания</string>
+    <string name="meal_hours">Метка зависит от времени снимка: завтрак 4:00–10:30, обед 11:30–14:30, ужин 18:00–22:00, в остальное время — перекус. Коснитесь фото, чтобы изменить её.</string>
+    <string name="theme_dark">тёмная</string>
+    <string name="theme_light">светлая</string>
+    <string name="colours">цвета</string>
+    <string name="text_size">размер текста</string>
+    <string name="font">шрифт</string>
+    <string name="haptics">вибрация при касании</string>
+    <string name="on">вкл</string>
+    <string name="off">выкл</string>
+    <string name="widget_shot_name">Фото еды</string>
+    <string name="widget_shot_desc">Одно касание открывает камеру</string>
+    <string name="widget_line_name">Дневник питания</string>
+    <string name="widget_line_desc">Итог дня, камера и карандаш активности</string>
+    <string name="tile_label">Фото еды</string>
+    <string name="shortcut_photo">Снять</string>
+    <string name="shortcut_activity">Активность</string>
+    <plurals name="n_photos">
+        <item quantity="one">%d фото</item>
+        <item quantity="few">%d фото</item>
+        <item quantity="many">%d фото</item>
+        <item quantity="other">%d фото</item>
+    </plurals>
+    <plurals name="n_activities">
+        <item quantity="one">%d активность</item>
+        <item quantity="few">%d активности</item>
+        <item quantity="many">%d активностей</item>
+        <item quantity="other">%d активности</item>
+    </plurals>
+    <plurals name="imported">
+        <item quantity="one">добавлена %d запись</item>
+        <item quantity="few">добавлено %d записи</item>
+        <item quantity="many">добавлено %d записей</item>
+        <item quantity="other">добавлено %d записи</item>
+    </plurals>
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Reader\'s Food Log</string>
+    <string name="app_title">food log</string>
+    <string name="action_ok">ok</string>
+    <string name="action_cancel">cancel</string>
+    <string name="settings">settings</string>
+    <string name="today">today</string>
+    <string name="yesterday">yesterday</string>
+    <string name="nothing_yet">nothing yet</string>
+    <string name="photograph">photograph</string>
+    <string name="activity">activity</string>
+    <string name="activity_title">physical activity, now</string>
+    <string name="activity_free">what did you do?</string>
+    <string name="act_strength">strength training</string>
+    <string name="act_intense">intense activity</string>
+    <string name="act_endurance">endurance</string>
+    <string name="act_other">other…</string>
+    <string name="meal_breakfast">breakfast</string>
+    <string name="meal_lunch">lunch</string>
+    <string name="meal_dinner">dinner</string>
+    <string name="meal_snack">snack</string>
+    <string name="touch_anywhere">touch anywhere</string>
+    <string name="camera_needed">The camera is all this screen does. Touch to allow it.</string>
+    <string name="failed">that did not work — try again</string>
+    <string name="share">share</string>
+    <string name="delete">delete</string>
+    <string name="delete_photo_q">delete this photo?</string>
+    <string name="delete_for_good">delete for good</string>
+    <string name="change_text">change the text</string>
+    <string name="local_hint">Everything stays on this phone. To move to a new phone, export the journal here and import it there.</string>
+    <string name="export_journal">export the journal</string>
+    <string name="export_hint">one zip file, where you choose</string>
+    <string name="import_journal">import a journal</string>
+    <string name="import_hint">adds, replaces nothing</string>
+    <string name="working">working…</string>
+    <string name="exported">journal exported</string>
+    <string name="nothing_new">nothing new in this file</string>
+    <string name="not_a_journal">this file is not a food log journal</string>
+    <string name="meal_hours">The label comes from the time of the photo: breakfast 4:00–10:30, lunch 11:30–14:30, dinner 18:00–22:00, snack the rest of the time. Touch a photo to change it.</string>
+    <string name="theme_dark">dark</string>
+    <string name="theme_light">light</string>
+    <string name="colours">colours</string>
+    <string name="text_size">text size</string>
+    <string name="font">font</string>
+    <string name="haptics">vibration on touch</string>
+    <string name="on">on</string>
+    <string name="off">off</string>
+    <string name="widget_shot_name">Food photo</string>
+    <string name="widget_shot_desc">One touch opens the camera</string>
+    <string name="widget_line_name">Food log</string>
+    <string name="widget_line_desc">Today\'s count, with the camera and the activity pencil</string>
+    <string name="tile_label">Food photo</string>
+    <string name="shortcut_photo">Photograph</string>
+    <string name="shortcut_activity">Activity</string>
+    <plurals name="n_photos">
+        <item quantity="one">%d photo</item>
+        <item quantity="other">%d photos</item>
+    </plurals>
+    <plurals name="n_activities">
+        <item quantity="one">%d activity</item>
+        <item quantity="other">%d activities</item>
+    </plurals>
+    <plurals name="imported">
+        <item quantity="one">%d entry added</item>
+        <item quantity="other">%d entries added</item>
+    </plurals>
+</resources>

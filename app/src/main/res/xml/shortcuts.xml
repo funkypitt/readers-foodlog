@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:shortcutId="activity" android:enabled="true" android:icon="@drawable/ic_plate" android:shortcutShortLabel="@string/shortcut_activity">
+        <intent android:action="com.freedomfighter.readersfoodlog.ADD_ACTIVITY" android:targetPackage="com.freedomfighter.readersfoodlog" android:targetClass="com.freedomfighter.readersfoodlog.MainActivity" />
+    </shortcut>
+    <shortcut android:shortcutId="photo" android:enabled="true" android:icon="@drawable/ic_plate" android:shortcutShortLabel="@string/shortcut_photo">
+        <intent android:action="android.intent.action.VIEW" android:targetPackage="com.freedomfighter.readersfoodlog" android:targetClass="com.freedomfighter.readersfoodlog.CaptureActivity" />
+    </shortcut>
+</shortcuts>

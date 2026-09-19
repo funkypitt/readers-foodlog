@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_title">esstagebuch</string>
+    <string name="action_ok">ok</string>
+    <string name="action_cancel">abbrechen</string>
+    <string name="settings">einstellungen</string>
+    <string name="today">heute</string>
+    <string name="yesterday">gestern</string>
+    <string name="nothing_yet">noch nichts</string>
+    <string name="photograph">fotografieren</string>
+    <string name="activity">aktivität</string>
+    <string name="activity_title">körperliche aktivität, jetzt</string>
+    <string name="activity_free">was haben sie gemacht?</string>
+    <string name="act_strength">krafttraining</string>
+    <string name="act_intense">intensive aktivität</string>
+    <string name="act_endurance">ausdauer</string>
+    <string name="act_other">anderes…</string>
+    <string name="meal_breakfast">frühstück</string>
+    <string name="meal_lunch">mittagessen</string>
+    <string name="meal_dinner">abendessen</string>
+    <string name="meal_snack">zwischenmahlzeit</string>
+    <string name="touch_anywhere">irgendwo tippen</string>
+    <string name="camera_needed">Dieser Bildschirm fotografiert nur. Tippen, um die Kamera zu erlauben.</string>
+    <string name="failed">das hat nicht geklappt — noch einmal versuchen</string>
+    <string name="share">teilen</string>
+    <string name="delete">löschen</string>
+    <string name="delete_photo_q">dieses foto löschen?</string>
+    <string name="delete_for_good">endgültig löschen</string>
+    <string name="change_text">text ändern</string>
+    <string name="local_hint">Alles bleibt auf diesem Telefon. Für ein neues Telefon das Tagebuch hier exportieren und dort importieren.</string>
+    <string name="export_journal">tagebuch exportieren</string>
+    <string name="export_hint">eine zip-datei, wo sie wollen</string>
+    <string name="import_journal">tagebuch importieren</string>
+    <string name="import_hint">ergänzt, ersetzt nichts</string>
+    <string name="working">läuft…</string>
+    <string name="exported">tagebuch exportiert</string>
+    <string name="nothing_new">nichts neues in dieser datei</string>
+    <string name="not_a_journal">diese datei ist kein esstagebuch</string>
+    <string name="meal_hours">Das etikett ergibt sich aus der uhrzeit des fotos: frühstück 4:00–10:30, mittagessen 11:30–14:30, abendessen 18:00–22:00, sonst zwischenmahlzeit. Foto antippen, um es zu ändern.</string>
+    <string name="theme_dark">dunkel</string>
+    <string name="theme_light">hell</string>
+    <string name="colours">farben</string>
+    <string name="text_size">textgrösse</string>
+    <string name="font">schrift</string>
+    <string name="haptics">vibration beim tippen</string>
+    <string name="on">ein</string>
+    <string name="off">aus</string>
+    <string name="widget_shot_name">Essensfoto</string>
+    <string name="widget_shot_desc">Ein tippen öffnet die kamera</string>
+    <string name="widget_line_name">Esstagebuch</string>
+    <string name="widget_line_desc">Der heutige stand, mit kamera und aktivitätsstift</string>
+    <string name="tile_label">Essensfoto</string>
+    <string name="shortcut_photo">Fotografieren</string>
+    <string name="shortcut_activity">Aktivität</string>
+    <plurals name="n_photos">
+        <item quantity="one">%d foto</item>
+        <item quantity="other">%d fotos</item>
+    </plurals>
+    <plurals name="n_activities">
+        <item quantity="one">%d aktivität</item>
+        <item quantity="other">%d aktivitäten</item>
+    </plurals>
+    <plurals name="imported">
+        <item quantity="one">%d eintrag hinzugefügt</item>
+        <item quantity="other">%d einträge hinzugefügt</item>
+    </plurals>
+</resources>

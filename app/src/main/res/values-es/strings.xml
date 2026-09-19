@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_title">diario de comidas</string>
+    <string name="action_ok">ok</string>
+    <string name="action_cancel">cancelar</string>
+    <string name="settings">ajustes</string>
+    <string name="today">hoy</string>
+    <string name="yesterday">ayer</string>
+    <string name="nothing_yet">nada todavía</string>
+    <string name="photograph">fotografiar</string>
+    <string name="activity">actividad</string>
+    <string name="activity_title">actividad física, ahora</string>
+    <string name="activity_free">¿qué ha hecho?</string>
+    <string name="act_strength">musculación</string>
+    <string name="act_intense">actividad intensa</string>
+    <string name="act_endurance">resistencia</string>
+    <string name="act_other">otra…</string>
+    <string name="meal_breakfast">desayuno</string>
+    <string name="meal_lunch">almuerzo</string>
+    <string name="meal_dinner">cena</string>
+    <string name="meal_snack">tentempié</string>
+    <string name="touch_anywhere">toque en cualquier lugar</string>
+    <string name="camera_needed">Esta pantalla solo sirve para fotografiar. Toque para permitir la cámara.</string>
+    <string name="failed">no ha funcionado — inténtelo de nuevo</string>
+    <string name="share">compartir</string>
+    <string name="delete">eliminar</string>
+    <string name="delete_photo_q">¿eliminar esta foto?</string>
+    <string name="delete_for_good">eliminar definitivamente</string>
+    <string name="change_text">cambiar el texto</string>
+    <string name="local_hint">Todo se queda en este teléfono. Para cambiar de teléfono, exporte el diario aquí e impórtelo allí.</string>
+    <string name="export_journal">exportar el diario</string>
+    <string name="export_hint">un archivo zip, donde quiera</string>
+    <string name="import_journal">importar un diario</string>
+    <string name="import_hint">añade, no reemplaza nada</string>
+    <string name="working">en curso…</string>
+    <string name="exported">diario exportado</string>
+    <string name="nothing_new">nada nuevo en este archivo</string>
+    <string name="not_a_journal">este archivo no es un diario de comidas</string>
+    <string name="meal_hours">La etiqueta viene de la hora de la foto: desayuno 4:00–10:30, almuerzo 11:30–14:30, cena 18:00–22:00, tentempié el resto del tiempo. Toque una foto para cambiarla.</string>
+    <string name="theme_dark">oscuro</string>
+    <string name="theme_light">claro</string>
+    <string name="colours">colores</string>
+    <string name="text_size">tamaño del texto</string>
+    <string name="font">fuente</string>
+    <string name="haptics">vibración al tocar</string>
+    <string name="on">sí</string>
+    <string name="off">no</string>
+    <string name="widget_shot_name">Foto de comida</string>
+    <string name="widget_shot_desc">Un toque abre la cámara</string>
+    <string name="widget_line_name">Diario de comidas</string>
+    <string name="widget_line_desc">El recuento de hoy, con la cámara y el lápiz de actividad</string>
+    <string name="tile_label">Foto de comida</string>
+    <string name="shortcut_photo">Fotografiar</string>
+    <string name="shortcut_activity">Actividad</string>
+    <plurals name="n_photos">
+        <item quantity="one">%d foto</item>
+        <item quantity="other">%d fotos</item>
+    </plurals>
+    <plurals name="n_activities">
+        <item quantity="one">%d actividad</item>
+        <item quantity="other">%d actividades</item>
+    </plurals>
+    <plurals name="imported">
+        <item quantity="one">%d entrada añadida</item>
+        <item quantity="other">%d entradas añadidas</item>
+    </plurals>
+</resources>

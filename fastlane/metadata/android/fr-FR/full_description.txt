@@ -1,0 +1,9 @@
+Photographiez ce que vous allez manger, aussi machinalement que l'on pioche dans un bol de cacahuètes. C'est tout le journal.
+
+• Le widget, la tuile des réglages rapides ou le grand bouton de l'app ouvrent le viseur ; un toucher n'importe où (ou une touche de volume) prend la photo, et l'écran se referme tout seul.
+• Chaque photo reçoit une étiquette d'après son heure : petit-déjeuner, déjeuner, dîner ou collation. Touchez une photo pour la changer.
+• L'accueil est une liste de jours. Ouvrez un jour pour voir ses photos dans l'ordre des heures.
+• L'activité physique en un toucher : musculation, activité intense, endurance — ou une ligne libre.
+• Tout reste sur le téléphone : ni compte, ni permission réseau. Exportez le journal en un seul fichier zip pour changer de téléphone ; l'import ajoute et ne remplace rien.
+
+Noir et blanc, tout en texte, six langues, comme les autres apps Reader's.
