@@ -44,7 +44,7 @@ object Units {
     fun show(context: Context, kg: Double, pounds: Boolean, sign: Boolean = false): String {
         val locale = context.resources.configuration.locales[0] ?: Locale.getDefault()
         val v = if (pounds) kg / LB else kg
-        return String.format(locale, if (sign) "%+.1f" else "%.1f", v) + " " + if (pounds) "lb" else "kg"
+        return String.format(locale, if (sign) "%+.1f" else "%.1f", v) + " " + context.getString(if (pounds) R.string.unit_lb else R.string.unit_kg)
     }
 
     /** "72,4" or "72.4" in the current unit, to kilograms; null when it is not a plausible weight. */

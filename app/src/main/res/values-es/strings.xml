@@ -22,6 +22,8 @@
     <string name="weight_last">último %1$s</string>
     <string name="weight_change">cambiar el peso</string>
     <string name="weight_unit">unidad de peso</string>
+    <string name="unit_kg">kg</string>
+    <string name="unit_lb">lb</string>
     <string name="curve_needs_two">La curva aparece con el segundo peso.</string>
     <string name="span_30">30 días</string>
     <string name="span_90">90 días</string>
@@ -60,7 +62,7 @@
     <string name="widget_shot_name">Foto de comida</string>
     <string name="widget_shot_desc">Un toque abre la cámara</string>
     <string name="widget_line_name">Diario de comidas</string>
-    <string name="widget_line_desc">El recuento de hoy, con la cámara y el lápiz de actividad</string>
+    <string name="widget_line_desc">El recuento de hoy, con botones para una foto y una actividad</string>
     <string name="tile_label">Foto de comida</string>
     <string name="shortcut_photo">Fotografiar</string>
     <string name="shortcut_activity">Actividad</string>

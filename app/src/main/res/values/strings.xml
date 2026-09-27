@@ -23,6 +23,8 @@
     <string name="weight_last">last %1$s</string>
     <string name="weight_change">change the weight</string>
     <string name="weight_unit">weight unit</string>
+    <string name="unit_kg">kg</string>
+    <string name="unit_lb">lb</string>
     <string name="curve_needs_two">The curve appears with the second weight.</string>
     <string name="span_30">30 days</string>
     <string name="span_90">90 days</string>
@@ -61,7 +63,7 @@
     <string name="widget_shot_name">Food photo</string>
     <string name="widget_shot_desc">One touch opens the camera</string>
     <string name="widget_line_name">Food log</string>
-    <string name="widget_line_desc">Today\'s count, with the camera and the activity pencil</string>
+    <string name="widget_line_desc">Today\'s count, with buttons for a photo and an activity</string>
     <string name="tile_label">Food photo</string>
     <string name="shortcut_photo">Photograph</string>
     <string name="shortcut_activity">Activity</string>

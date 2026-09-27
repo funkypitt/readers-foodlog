@@ -292,7 +292,7 @@ fun SettingsScreen(nav: Nav, app: App) {
                 TextRow(when (s.font) { FontChoice.SANS -> "sans-serif"; FontChoice.SERIF -> "serif"; FontChoice.MONO -> "mono" }, secondary = stringResource(R.string.font)) {
                     app.prefs.setFont(when (s.font) { FontChoice.SANS -> FontChoice.SERIF; FontChoice.SERIF -> FontChoice.MONO; FontChoice.MONO -> FontChoice.SANS })
                 }
-                TextRow(if (s.pounds) "lb" else "kg", secondary = stringResource(R.string.weight_unit)) { app.prefs.setPounds(!s.pounds) }
+                TextRow(stringResource(if (s.pounds) R.string.unit_lb else R.string.unit_kg), secondary = stringResource(R.string.weight_unit)) { app.prefs.setPounds(!s.pounds) }
                 TextRow(if (s.haptics) stringResource(R.string.on) else stringResource(R.string.off), secondary = stringResource(R.string.haptics)) { app.prefs.setHaptics(!s.haptics) }
                 Rule(Modifier.padding(vertical = 8.dp))
                 Small(stringResource(R.string.meal_hours), Modifier.padding(horizontal = rowPadH, vertical = 12.dp), maxLines = 6)

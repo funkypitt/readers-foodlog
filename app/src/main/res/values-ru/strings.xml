@@ -22,6 +22,8 @@
     <string name="weight_last">прошлый %1$s</string>
     <string name="weight_change">изменить вес</string>
     <string name="weight_unit">единица веса</string>
+    <string name="unit_kg">кг</string>
+    <string name="unit_lb">фнт</string>
     <string name="curve_needs_two">График появится после второго взвешивания.</string>
     <string name="span_30">30 дней</string>
     <string name="span_90">90 дней</string>
@@ -60,7 +62,7 @@
     <string name="widget_shot_name">Фото еды</string>
     <string name="widget_shot_desc">Одно касание открывает камеру</string>
     <string name="widget_line_name">Дневник питания</string>
-    <string name="widget_line_desc">Итог дня, камера и карандаш активности</string>
+    <string name="widget_line_desc">Итог дня, с кнопками для фото и активности</string>
     <string name="tile_label">Фото еды</string>
     <string name="shortcut_photo">Снять</string>
     <string name="shortcut_activity">Активность</string>
