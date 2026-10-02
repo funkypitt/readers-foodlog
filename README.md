@@ -15,7 +15,8 @@ weight once a day with its curve. No network permission; the journal exports as 
   [Reader's Launcher](https://github.com/funkypitt/readers-launcher), a shortcut to the viewfinder.
 - Home is one folder per day; open a day for its photos in the order of the clock. Touch a
   photo to change its label, share it or delete it.
-- Physical activity in one tap: strength training, intense activity, endurance, or a free line.
+- Physical activity in one tap: strength training, a muscle group (push, pull, legs, back, abs),
+  intense activity, endurance, or a free line.
 - Weight, once a day: one tap opens the number pad; a curve shows 30 days, 90 days, a year or
   everything. Stored in kilograms, shown in kg or lb.
 - Local only: camera permission, no network permission, no account, Android backup off.

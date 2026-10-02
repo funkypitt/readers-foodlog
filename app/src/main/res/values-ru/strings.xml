@@ -12,6 +12,11 @@
     <string name="activity_title">физическая активность, сейчас</string>
     <string name="activity_free">что вы делали?</string>
     <string name="act_strength">силовая тренировка</string>
+    <string name="act_push">жим</string>
+    <string name="act_pull">тяга</string>
+    <string name="act_legs">ноги</string>
+    <string name="act_back">спина</string>
+    <string name="act_abs">пресс</string>
     <string name="act_intense">интенсивная нагрузка</string>
     <string name="act_endurance">выносливость</string>
     <string name="act_other">другое…</string>

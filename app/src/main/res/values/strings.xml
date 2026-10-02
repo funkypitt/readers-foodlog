@@ -13,6 +13,11 @@
     <string name="activity_title">physical activity, now</string>
     <string name="activity_free">what did you do?</string>
     <string name="act_strength">strength training</string>
+    <string name="act_push">push</string>
+    <string name="act_pull">pull</string>
+    <string name="act_legs">legs</string>
+    <string name="act_back">back</string>
+    <string name="act_abs">abs</string>
     <string name="act_intense">intense activity</string>
     <string name="act_endurance">endurance</string>
     <string name="act_other">other…</string>

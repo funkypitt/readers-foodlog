@@ -3,7 +3,7 @@ Photograph what you are about to eat, as thoughtlessly as you would reach into a
 • The widget, the quick-settings tile or the app's big button open the viewfinder; a touch anywhere (or a volume key) takes the photo, and the screen closes by itself.
 • Each photo is labelled from the time it was taken: breakfast, lunch, dinner or snack. Touch a photo to change the label.
 • The home screen is a list of days. Open a day to see its photos in the order of the clock.
-• Physical activity in one tap: strength training, intense activity, endurance — or a line of your own.
+• Physical activity in one tap: strength training, a muscle group (push, pull, legs, back, abs), intense activity, endurance — or a line of your own.
 • Your weight once a day, in one tap, and a curve of how it moves (30 days, 90 days, a year, everything).
 • Everything stays on the phone: no account, no network permission. Export the journal as one zip file to carry it to a new phone; importing adds, and replaces nothing.
 

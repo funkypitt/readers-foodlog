@@ -12,6 +12,11 @@
     <string name="activity_title">activité physique, maintenant</string>
     <string name="activity_free">qu\'avez-vous fait ?</string>
     <string name="act_strength">musculation</string>
+    <string name="act_push">poussée</string>
+    <string name="act_pull">tirage</string>
+    <string name="act_legs">jambes</string>
+    <string name="act_back">dos</string>
+    <string name="act_abs">abdos</string>
     <string name="act_intense">activité intense</string>
     <string name="act_endurance">endurance</string>
     <string name="act_other">autre…</string>

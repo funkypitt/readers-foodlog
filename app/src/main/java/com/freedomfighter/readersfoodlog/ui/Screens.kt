@@ -132,13 +132,16 @@ fun ActionBar(nav: Nav, app: App, weightToday: Double?) {
     Box(Modifier.windowInsetsPadding(WindowInsets.navigationBars))
 }
 
-/** Three one-tap activities, or a free line; saved at the current time. */
+/** One-tap activities, or a free line; saved at the current time. */
 @Composable
 fun ActivityLogger(app: App) {
     val context = LocalContext.current
     var free by remember { mutableStateOf(false) }
     if (app.activityPrompt.value) {
-        val quick = listOf(R.string.act_strength, R.string.act_intense, R.string.act_endurance).map { stringResource(it) }
+        val quick = listOf(
+            R.string.act_strength, R.string.act_push, R.string.act_pull, R.string.act_legs, R.string.act_back, R.string.act_abs,
+            R.string.act_intense, R.string.act_endurance
+        ).map { stringResource(it) }
         TextMenu(
             stringResource(R.string.activity_title),
             quick.map { label -> MenuItem(label) { Journal.addActivity(context, label) } },
