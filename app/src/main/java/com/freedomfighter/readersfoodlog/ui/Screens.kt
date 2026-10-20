@@ -127,8 +127,8 @@ fun ActionBar(nav: Nav, app: App, weightToday: Double?) {
         }
     }
     Box(
-        Modifier.fillMaxWidth().background(colors.fg).noRippleClickable { tick(); photograph(context) }.padding(horizontal = rowPadH, vertical = 30.dp)
-    ) { T("◉  " + stringResource(R.string.photograph), color = colors.bg, maxLines = 1) }
+        Modifier.fillMaxWidth().background(colors.accent).noRippleClickable { tick(); photograph(context) }.padding(horizontal = rowPadH, vertical = 30.dp)
+    ) { T("◉  " + stringResource(R.string.photograph), color = colors.onAccent, maxLines = 1) }
     Box(Modifier.windowInsetsPadding(WindowInsets.navigationBars))
 }
 
@@ -252,7 +252,6 @@ fun sharePhoto(context: Context, file: File) {
 fun SettingsScreen(nav: Nav, app: App) {
     val context = LocalContext.current
     val s by app.prefs.settings.collectAsState()
-    val colors = LocalColors.current
     val typo = LocalTypo.current
     val scope = rememberCoroutineScope()
     var working by remember { mutableStateOf(false) }
@@ -288,7 +287,7 @@ fun SettingsScreen(nav: Nav, app: App) {
                 }
                 notice?.let { T(it, Modifier.padding(horizontal = rowPadH, vertical = 12.dp), size = typo.title) }
                 Rule(Modifier.padding(vertical = 8.dp))
-                TextRow(if (colors.isDark) stringResource(R.string.theme_dark) else stringResource(R.string.theme_light), secondary = stringResource(R.string.colours)) { app.prefs.toggleTheme(colors.isDark) }
+                TextRow(Labels.themeName(context, s.theme), secondary = stringResource(R.string.colours)) { app.prefs.nextTheme() }
                 TextRow(when (s.textSize) { TextSize.SMALL -> "S"; TextSize.MEDIUM -> "M"; TextSize.LARGE -> "L" }, secondary = stringResource(R.string.text_size)) {
                     app.prefs.setTextSize(when (s.textSize) { TextSize.SMALL -> TextSize.MEDIUM; TextSize.MEDIUM -> TextSize.LARGE; TextSize.LARGE -> TextSize.SMALL })
                 }
