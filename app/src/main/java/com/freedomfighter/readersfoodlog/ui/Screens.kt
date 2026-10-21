@@ -126,8 +126,10 @@ fun ActionBar(nav: Nav, app: App, weightToday: Double?) {
             TextRow(weightToday?.let { Units.show(context, it, s.pounds) } ?: ("⚖  " + stringResource(R.string.weight)), size = LocalTypo.current.title) { tick(); nav.push(Screen.Weight) }
         }
     }
+    // The main action: a card too with tiles, but it keeps the accent fill.
     Box(
-        Modifier.fillMaxWidth().background(colors.accent).noRippleClickable { tick(); photograph(context) }.padding(horizontal = rowPadH, vertical = 30.dp)
+        Modifier.fillMaxWidth().tileCard(colors.accent).noRippleClickable { tick(); photograph(context) }
+            .padding(horizontal = if (colors.tiles) rowPadH - tileGap else rowPadH, vertical = 30.dp)
     ) { T("◉  " + stringResource(R.string.photograph), color = colors.onAccent, maxLines = 1) }
     Box(Modifier.windowInsetsPadding(WindowInsets.navigationBars))
 }
@@ -227,8 +229,9 @@ private fun PhotoBlock(p: PhotoEntry, onClick: () -> Unit) {
     val bitmap by produceState<Bitmap?>(Pictures.cached(p.file), p.file) {
         if (value == null) value = withContext(Dispatchers.IO) { Pictures.load(p.file, widthPx) }
     }
-    Column(Modifier.fillMaxWidth().noRippleClickable(onClick = onClick)) {
-        Row(Modifier.padding(horizontal = rowPadH).padding(top = 22.dp, bottom = 10.dp), verticalAlignment = Alignment.Bottom) {
+    // With tiles the photo and its label are one card; the picture fills the card, clipped by its corners.
+    Column(Modifier.fillMaxWidth().tileCard().noRippleClickable(onClick = onClick)) {
+        Row(Modifier.padding(horizontal = if (colors.tiles) rowPadH - tileGap else rowPadH).padding(top = 22.dp, bottom = 10.dp), verticalAlignment = Alignment.Bottom) {
             T(Labels.meal(context, p.meal), size = LocalTypo.current.title, maxLines = 1)
             Small("   " + HM.format(p.time), maxLines = 1)
         }
