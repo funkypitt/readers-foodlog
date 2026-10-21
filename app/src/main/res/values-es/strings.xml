@@ -39,6 +39,7 @@
     <string name="meal_dinner">cena</string>
     <string name="meal_snack">tentempié</string>
     <string name="touch_anywhere">toque en cualquier lugar</string>
+    <string name="from_gallery">desde la galería…</string>
     <string name="camera_needed">Esta pantalla solo sirve para fotografiar. Toque para permitir la cámara.</string>
     <string name="failed">no ha funcionado — inténtelo de nuevo</string>
     <string name="share">compartir</string>

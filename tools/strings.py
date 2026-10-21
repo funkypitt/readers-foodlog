@@ -44,6 +44,7 @@ S = {
  "meal_dinner": ["dinner", "dîner", "Abendessen", "cena", "jantar", "ужин"],
  "meal_snack": ["snack", "collation", "Zwischenmahlzeit", "tentempié", "lanche", "перекус"],
  "touch_anywhere": ["touch anywhere", "touchez n'importe où", "irgendwo tippen", "toque en cualquier lugar", "toque em qualquer sítio", "коснитесь экрана"],
+ "from_gallery": ["from the gallery…", "depuis la galerie…", "aus der Galerie…", "desde la galería…", "da galeria…", "из галереи…"],
  "camera_needed": ["The camera is all this screen does. Touch to allow it.", "Cet écran ne sert qu'à photographier. Touchez pour autoriser l'appareil photo.", "Dieser Bildschirm fotografiert nur. Tippen, um die Kamera zu erlauben.", "Esta pantalla solo sirve para fotografiar. Toque para permitir la cámara.", "Este ecrã só serve para fotografar. Toque para permitir a câmara.", "Этот экран только фотографирует. Коснитесь, чтобы разрешить камеру."],
  "failed": ["that did not work — try again", "cela n'a pas marché — réessayez", "das hat nicht geklappt — noch einmal versuchen", "no ha funcionado — inténtelo de nuevo", "não funcionou — tente de novo", "не получилось — попробуйте ещё раз"],
  "share": ["share", "partager", "teilen", "compartir", "partilhar", "поделиться"],

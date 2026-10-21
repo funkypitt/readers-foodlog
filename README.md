@@ -9,7 +9,8 @@ weight once a day with its curve. No network permission; the journal exports as 
 ## Key points
 
 - Taking a photo: one touch on the widget, one touch anywhere on the viewfinder (or a volume
-  key), and the screen closes by itself.
+  key), and the screen closes by itself. A text row at the bottom of the viewfinder takes a
+  picture from the gallery instead, filed under the time it is added.
 - Ways in: a 1×1 camera widget, a 4×1 widget (today's count, pencil, camera), a quick-settings
   tile that works over the lock screen, launcher shortcuts, and the food log tile of
   [Reader's Launcher](https://github.com/funkypitt/readers-launcher), a shortcut to the viewfinder.

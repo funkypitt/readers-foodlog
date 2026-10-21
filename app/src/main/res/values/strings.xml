@@ -40,6 +40,7 @@
     <string name="meal_dinner">dinner</string>
     <string name="meal_snack">snack</string>
     <string name="touch_anywhere">touch anywhere</string>
+    <string name="from_gallery">from the gallery…</string>
     <string name="camera_needed">The camera is all this screen does. Touch to allow it.</string>
     <string name="failed">that did not work — try again</string>
     <string name="share">share</string>

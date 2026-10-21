@@ -39,6 +39,7 @@
     <string name="meal_dinner">dîner</string>
     <string name="meal_snack">collation</string>
     <string name="touch_anywhere">touchez n\'importe où</string>
+    <string name="from_gallery">depuis la galerie…</string>
     <string name="camera_needed">Cet écran ne sert qu\'à photographier. Touchez pour autoriser l\'appareil photo.</string>
     <string name="failed">cela n\'a pas marché — réessayez</string>
     <string name="share">partager</string>

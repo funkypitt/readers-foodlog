@@ -11,7 +11,10 @@ exactly these folders.
 ## Meal labels
 
 Breakfast / lunch / dinner / snack from the time the photo was taken: 4:00–10:30,
-11:30–14:30, 18:00–22:00, snack otherwise.
+11:30–14:30, 18:00–22:00, snack otherwise. A picture chosen from the gallery (the text
+row at the bottom of the viewfinder, system photo picker, no storage permission) is filed
+under the time it is added, not the time it was taken, and re-encoded like a shot: upright,
+at most 1600 px, no EXIF.
 
 ## Provider
 

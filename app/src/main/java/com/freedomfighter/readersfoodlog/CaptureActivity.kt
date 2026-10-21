@@ -16,6 +16,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -47,8 +48,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.freedomfighter.readersfoodlog.data.Journal
 import com.freedomfighter.readersfoodlog.data.Meal
+import com.freedomfighter.readersfoodlog.data.Pictures
 import com.freedomfighter.readersfoodlog.ui.Labels
 import com.freedomfighter.readersfoodlog.ui.LocalColors
 import com.freedomfighter.readersfoodlog.ui.LocalTypo
@@ -56,6 +59,9 @@ import com.freedomfighter.readersfoodlog.ui.ReaderTheme
 import com.freedomfighter.readersfoodlog.ui.Small
 import com.freedomfighter.readersfoodlog.ui.T
 import com.freedomfighter.readersfoodlog.ui.noRippleClickable
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -63,6 +69,8 @@ import java.time.format.DateTimeFormatter
 /**
  * The whole gesture: the viewfinder fills the screen, a touch anywhere (or a volume key)
  * takes the photo, the label shows for a moment, and the screen closes by itself.
+ * One text row at the bottom offers a picture from the gallery instead; it is filed
+ * exactly like a shot, under the time it is added.
  */
 class CaptureActivity : ComponentActivity() {
     private val app get() = application as App
@@ -78,6 +86,10 @@ class CaptureActivity : ComponentActivity() {
     private val permission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { ok ->
         granted = ok
         if (ok) bind()
+    }
+    /** The system picker: no storage permission, and nothing chosen simply returns to the viewfinder. */
+    private val picker = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        if (uri != null) keep(uri) else busy = false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -118,8 +130,12 @@ class CaptureActivity : ComponentActivity() {
                             Box(Modifier.fillMaxWidth().align(Alignment.TopCenter).background(Color.Black.copy(alpha = 0.45f)).windowInsetsPadding(WindowInsets.statusBars).padding(14.dp), contentAlignment = Alignment.Center) {
                                 T(Labels.meal(this@CaptureActivity, Meal.at(LocalTime.now())), color = Color.White, maxLines = 1)
                             }
-                            Box(Modifier.fillMaxWidth().align(Alignment.BottomCenter).background(Color.Black.copy(alpha = 0.45f)).windowInsetsPadding(WindowInsets.navigationBars).padding(18.dp), contentAlignment = Alignment.Center) {
-                                Small(stringResource(if (failed) R.string.failed else R.string.touch_anywhere), Modifier.fillMaxWidth(), color = Color.White, maxLines = 2, align = TextAlign.Center)
+                            Column(Modifier.fillMaxWidth().align(Alignment.BottomCenter).background(Color.Black.copy(alpha = 0.45f)).windowInsetsPadding(WindowInsets.navigationBars).padding(top = 18.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                                Small(stringResource(if (failed) R.string.failed else R.string.touch_anywhere), Modifier.fillMaxWidth().padding(horizontal = 18.dp), color = Color.White, maxLines = 2, align = TextAlign.Center)
+                                // The one place a touch does not shoot: a text row, as everywhere else in the app.
+                                Box(Modifier.fillMaxWidth().noRippleClickable { pick() }.padding(vertical = 18.dp), contentAlignment = Alignment.Center) {
+                                    T(stringResource(R.string.from_gallery), color = Color.White, maxLines = 1)
+                                }
                             }
                         }
                     }
@@ -171,6 +187,32 @@ class CaptureActivity : ComponentActivity() {
                 failed = true
             }
         })
+    }
+
+    private fun pick() {
+        if (busy || saved != null) return
+        busy = true
+        failed = false
+        runCatching { picker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }
+            .onFailure { busy = false; failed = true }
+    }
+
+    /** Files the chosen picture under now, like a shot: the journal says when you ate, not when the picture was taken. */
+    private fun keep(uri: Uri) {
+        val now = LocalDateTime.now()
+        val file = Journal.newPhotoFile(this, now)
+        lifecycleScope.launch {
+            val ok = withContext(Dispatchers.IO) { Pictures.save(this@CaptureActivity, uri, file) }
+            if (ok) {
+                Journal.changed(this@CaptureActivity)
+                saved = Labels.meal(this@CaptureActivity, Meal.at(now.toLocalTime())) + " · " + hm.format(now)
+                handler.postDelayed({ finish() }, 900)
+            } else {
+                file.parentFile?.let { if (it.list()?.isEmpty() == true) it.delete() }
+                busy = false
+                failed = true
+            }
+        }
     }
 
     /** Refused once already: Android no longer shows its dialog, so the app's page is the way. */

@@ -39,6 +39,7 @@
     <string name="meal_dinner">ужин</string>
     <string name="meal_snack">перекус</string>
     <string name="touch_anywhere">коснитесь экрана</string>
+    <string name="from_gallery">из галереи…</string>
     <string name="camera_needed">Этот экран только фотографирует. Коснитесь, чтобы разрешить камеру.</string>
     <string name="failed">не получилось — попробуйте ещё раз</string>
     <string name="share">поделиться</string>

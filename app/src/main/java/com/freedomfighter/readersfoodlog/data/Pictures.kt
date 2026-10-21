@@ -1,8 +1,11 @@
 package com.freedomfighter.readersfoodlog.data
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
+import android.net.Uri
+import android.util.Log
 import android.util.LruCache
 import androidx.exifinterface.media.ExifInterface
 import java.io.File
@@ -31,4 +34,29 @@ object Pictures {
         cache.put(file.path, upright)
         return upright
     }
+
+    /**
+     * Copies a picture chosen outside the app into [target] the way the camera would have
+     * saved it: upright, at most [maxSide] pixels on its longer side, JPEG at [quality].
+     * Blocking: call it off the main thread. False when the picture could not be read.
+     */
+    fun save(context: Context, source: Uri, target: File, maxSide: Int = 1600, quality: Int = 88): Boolean = runCatching {
+        val resolver = context.contentResolver
+        val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        (resolver.openInputStream(source) ?: return false).use { BitmapFactory.decodeStream(it, null, bounds) }
+        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) return false
+        val rotation = resolver.openInputStream(source)?.use { runCatching { ExifInterface(it).rotationDegrees }.getOrDefault(0) } ?: 0
+        val longest = maxOf(bounds.outWidth, bounds.outHeight)
+        var sample = 1
+        while (longest / (sample * 2) >= maxSide) sample *= 2
+        val raw = resolver.openInputStream(source)?.use { BitmapFactory.decodeStream(it, null, BitmapFactory.Options().apply { inSampleSize = sample }) } ?: return false
+        val scale = maxSide.toFloat() / maxOf(raw.width, raw.height)
+        val matrix = Matrix().apply { if (scale < 1f) postScale(scale, scale); if (rotation != 0) postRotate(rotation.toFloat()) }
+        val ready = if (matrix.isIdentity) raw else Bitmap.createBitmap(raw, 0, 0, raw.width, raw.height, matrix, true).also { if (it !== raw) raw.recycle() }
+        target.parentFile?.mkdirs()
+        val ok = target.outputStream().use { ready.compress(Bitmap.CompressFormat.JPEG, quality, it) }
+        ready.recycle()
+        if (!ok) target.delete()
+        ok
+    }.getOrElse { Log.w("FoodLog", "picture not saved", it); target.delete(); false }
 }

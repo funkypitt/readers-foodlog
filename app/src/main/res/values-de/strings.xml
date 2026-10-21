@@ -39,6 +39,7 @@
     <string name="meal_dinner">Abendessen</string>
     <string name="meal_snack">Zwischenmahlzeit</string>
     <string name="touch_anywhere">irgendwo tippen</string>
+    <string name="from_gallery">aus der Galerie…</string>
     <string name="camera_needed">Dieser Bildschirm fotografiert nur. Tippen, um die Kamera zu erlauben.</string>
     <string name="failed">das hat nicht geklappt — noch einmal versuchen</string>
     <string name="share">teilen</string>
