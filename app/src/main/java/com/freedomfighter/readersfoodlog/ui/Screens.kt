@@ -121,9 +121,9 @@ fun ActionBar(nav: Nav, app: App, weightToday: Double?) {
     Rule()
     val s by app.prefs.settings.collectAsState()
     Row(Modifier.fillMaxWidth()) {
-        Box(Modifier.weight(1f)) { TextRow("✎  " + stringResource(R.string.activity), size = LocalTypo.current.title) { tick(); app.activityPrompt.value = true } }
+        Box(Modifier.weight(1f)) { Side(end = false) { TextRow("✎  " + stringResource(R.string.activity), size = LocalTypo.current.title) { tick(); app.activityPrompt.value = true } } }
         Box(Modifier.weight(1f)) {
-            TextRow(weightToday?.let { Units.show(context, it, s.pounds) } ?: ("⚖  " + stringResource(R.string.weight)), size = LocalTypo.current.title) { tick(); nav.push(Screen.Weight) }
+            Side(start = false) { TextRow(weightToday?.let { Units.show(context, it, s.pounds) } ?: ("⚖  " + stringResource(R.string.weight)), size = LocalTypo.current.title) { tick(); nav.push(Screen.Weight) } }
         }
     }
     // The main action: a card too with tiles, but it keeps the accent fill.
